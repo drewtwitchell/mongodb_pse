@@ -1,4 +1,7 @@
 # add the below resource in the ec2.tf file to launch an ec2 instance
+provider "aws" {
+  region = "us-east-1"
+}
 
 resource "aws_instance" "terraform-instance" {
   ami                    = var.AMIS[var.REGION]
