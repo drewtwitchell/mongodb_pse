@@ -1,5 +1,6 @@
 # add the below resource in the ec2.tf file to launch an ec2 instance
 provider "aws" {
+  alias = "pse_s3_region"
   region = "us-east-1"
 }
 
