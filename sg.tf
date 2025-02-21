@@ -1,8 +1,8 @@
 # add the below resources in the sg.tf file to create a new security group
 
 resource "aws_security_group" "terrafrom_sg" {
-  name        = "allow_ssh"
-  description = "sg for to allow ssh"
+  name        = "allow_ssh_and_mongo"
+  description = "sg for to allow ssh and mongo"
   vpc_id      = aws_vpc.my_vpc.id
 
   tags = {
