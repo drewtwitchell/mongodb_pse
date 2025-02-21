@@ -28,7 +28,7 @@ resource "aws_instance" "terraform-instance" {
   }
 }
 
-resource "aws_s3_bucket" "my_bucket" {
+resource "aws_s3_bucket" "pse_bucket" {
   bucket  = "pse-bucket" 
   tags    = {
 	Name          = "pse-bucket"
@@ -36,8 +36,8 @@ resource "aws_s3_bucket" "my_bucket" {
   }
 }
 
-resource "aws_s3_bucket_versioning" "versioning_example" {
-  bucket = aws_s3_bucket.my_bucket.id
+resource "aws_s3_bucket_versioning" "pse_versioning" {
+  bucket = aws_s3_bucket.pse_bucket.id
   versioning_configuration {
     status = "Enabled"
   }
