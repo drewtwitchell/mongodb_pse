@@ -37,7 +37,7 @@ resource "aws_s3_bucket" "pse_tasky_bucket" {
 }
 
 resource "aws_s3_bucket_versioning" "pse_tasky_versioning" {
-  bucket = aws_s3_bucket.pse_bucket.id
+  bucket = aws_s3_bucket.pse_tasky_bucket.id
   versioning_configuration {
     status = "Enabled"
   }
