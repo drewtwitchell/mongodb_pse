@@ -28,15 +28,15 @@ resource "aws_instance" "terraform-instance" {
   }
 }
 
-resource "aws_s3_bucket" "pse_bucket" {
-  bucket  = "pse-bucket" 
+resource "aws_s3_bucket" "pse_tasky_bucket" {
+  bucket  = "pse-tasky-bucket" 
   tags    = {
-	Name          = "pse-bucket"
+	Name          = "pse-tasky-bucket"
 	Environment    = "Production"
   }
 }
 
-resource "aws_s3_bucket_versioning" "pse_versioning" {
+resource "aws_s3_bucket_versioning" "pse_tasky_versioning" {
   bucket = aws_s3_bucket.pse_bucket.id
   versioning_configuration {
     status = "Enabled"
