@@ -26,9 +26,17 @@ resource "aws_instance" "terraform-instance" {
 
 resource "aws_s3_bucket" "my_bucket" {
   bucket  = "pse-bucket"
+  region = "${var.REGION}" 
   tags    = {
 	Name          = "pse-bucket"
 	Environment    = "Production"
+  }
+}
+
+resource "aws_s3_bucket_versioning" "versioning_example" {
+  bucket = aws_s3_bucket.my_bucket.id
+  versioning_configuration {
+    status = "Enabled"
   }
 }
 
