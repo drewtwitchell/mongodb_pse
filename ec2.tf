@@ -24,9 +24,8 @@ resource "aws_instance" "terraform-instance" {
   }
 }
 
-resource "aws_s3_bucket" "pse_bucket" {
+resource "aws_s3_bucket" "my_bucket" {
   bucket  = "pse-bucket"
-  region  = var.REGION
   tags    = {
 	Name          = "pse-bucket"
 	Environment    = "Production"
