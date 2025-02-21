@@ -24,6 +24,14 @@ resource "aws_instance" "terraform-instance" {
   }
 }
 
+resource "aws_s3_bucket" "pse_bucket" {
+  bucket  = "pse-bucket"
+  tags    = {
+	Name          = "pse-bucket"
+	Environment    = "Production"
+  }
+}
+
 output "PublicIP" {
   value = aws_instance.terraform-instance.public_ip
 }
