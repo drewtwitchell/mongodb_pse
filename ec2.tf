@@ -1,7 +1,15 @@
-# add the below resource in the ec2.tf file to launch an ec2 instance
 provider "aws" {
   alias = "pse_s3_region"
   region = "us-east-1"
+}
+
+data "aws_iam_role" "ec2_allow_s3_connection" {
+  name = "EC2_allow_S3_connection"
+}
+
+resource "aws_iam_instance_profile" "ec2_s3_profile" {
+  name = "EC2S3Profile"
+  role = data.aws_iam_role.ec2_allow_s3_connection.name
 }
 
 resource "aws_instance" "terraform-instance" {
@@ -10,6 +18,7 @@ resource "aws_instance" "terraform-instance" {
   subnet_id              = aws_subnet.public_subnet_1.id
   key_name               = var.PUB_KEY
   vpc_security_group_ids = [aws_security_group.terrafrom_sg.id]
+  iam_instance_profile   = aws_iam_instance_profile.ec2_s3_profile.name
   user_data = <<-EOF
               #!/bin/bash
               sudo apt-get update
@@ -32,8 +41,8 @@ resource "aws_instance" "terraform-instance" {
 resource "aws_s3_bucket" "pse_tasky_bucket" {
   bucket  = "pse-tasky-bucket" 
   tags    = {
-	Name          = "pse-tasky-bucket"
-	Environment    = "Production"
+    Name          = "pse-tasky-bucket"
+    Environment    = "Production"
   }
 }
 
