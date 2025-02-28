@@ -20,7 +20,7 @@ resource "aws_vpc_security_group_ingress_rule" "allow_tls_ipv4" {
 
 resource "aws_vpc_security_group_ingress_rule" "allow_tls_ipv4_27017" {
   security_group_id = aws_security_group.terrafrom_sg.id
-  cidr_ipv4         = "34.203.25.121/32"
+  cidr_ipv4         = "44.206.114.40/32"
   from_port         = 27017
   ip_protocol       = "tcp"
   to_port           = 27017
